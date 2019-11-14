@@ -20,6 +20,7 @@ router.get("/", (req, res) => {
 // GET /:id
 
 router.get("/:id", (req, res) => {
+  // db('accounts').where().select().then().catch()
   db("accounts")
     .where("id", "=", req.params.id)
     .first()
@@ -74,7 +75,7 @@ router.put("/:id", (req, res) => {
     })
     .catch(err => {
       res.status(500).json({
-        message: `Unabel to update id ${id}. Error: ${err}`
+        message: `Unable to update id ${id}. Error: ${err}`
       });
     });
 });
