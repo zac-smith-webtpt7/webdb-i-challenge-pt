@@ -19,22 +19,8 @@ router.get("/", (req, res) => {
 
 // GET /:id
 
-// router.get("/", (req, res) => {
-//   db("accounts")
-//     .where("id", "=", req.params.id)
-//     .first()
-//     .then(account => {
-//       res.status(200).json(account);
-//     })
-//     .catch(err => {
-//       res.status(500).json({
-//         message: `Unable to get account with id ${id}. Error: ${err}`
-//       });
-//     });
-// });
 router.get("/:id", (req, res) => {
-  db.select("*")
-    .from("accounts")
+  db("accounts")
     .where("id", "=", req.params.id)
     .first()
     .then(account => {
@@ -46,6 +32,20 @@ router.get("/:id", (req, res) => {
       });
     });
 });
+// router.get("/:id", (req, res) => {
+//   db.select("*")
+//     .from("accounts")
+//     .where("id", "=", req.params.id)
+//     .first()
+//     .then(account => {
+//       res.status(200).json(account);
+//     })
+//     .catch(err => {
+//       res.status(500).json({
+//         message: `Unable to get account with id ${id}. Error: ${err}`
+//       });
+//     });
+// });
 
 // POST /
 router.post("/", (req, res) => {
